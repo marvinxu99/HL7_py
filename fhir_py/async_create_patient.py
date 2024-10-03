@@ -24,7 +24,7 @@ async def main():
                         "use": "official",
                         "family": "Xu",
                         "given": [
-                            "Wesley7"
+                            "Wesley8"
                         ]
                     }
                 ],
@@ -37,9 +37,13 @@ async def main():
                     }
                 ]
         )
-    resp = await patient.save()
-    print(resp.serialize())
+    
+    try:
+        resp = await patient.save()
+        print("Creating patient successfull:", resp.serialize())
 
+    except Exception as err:
+        print("Error in creating patient:", err)
 
 
 if __name__ == '__main__':
