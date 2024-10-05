@@ -4,7 +4,7 @@
 from zato.server.service import Service
 
 class FHIService1(Service):
-    name = 'demo.fhir.1'
+    name = 'mxfhir1.demo.1'
 
     def handle(self) -> 'None':
 

@@ -4,7 +4,7 @@
 from zato.server.service import Service
 
 class CreatePatient(Service):
-    name = 'demo.fhir.2.create'
+    name = 'mxfhir2.create'
 
     def handle(self) -> 'None':
 
