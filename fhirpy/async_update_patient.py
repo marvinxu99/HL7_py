@@ -42,52 +42,5 @@ async def main():
         print("Error in creating patient:", err)
     
 
-    # # Create Patient resource
-    # patient= client.resource(
-    #             "Patient",
-    #             active=False,
-    #             name= 
-    #             gender="male",
-    #             address=[
-    #                 {
-    #                     "use": "home",
-    #                     "text": "test street",
-    #                     "city": "Burnaby"
-    #                 }
-    #             ]
-    #     )
-    
-
-
-
-    # # Create Organization resource
-    # organization = client.resource(
-    #     'Organization',
-    #     name='beda.software',
-    #     active=False
-    # )
-    # await organization.save()
-
-    # # Update (PATCH) organization. Resource support accessing its elements
-    # # both as attribute and as a dictionary keys
-    # if organization['active'] is False:
-    #     organization.active = True
-    # await organization.save(fields=['active'])
-    # # `await organization.patch(active=True)` would do the same PATCH operation
-
-    # # Get patient resource by reference and delete
-    # patient_ref = client.reference('Patient', 'new_patient')
-    # # Get resource from this reference
-    # # (throw ResourceNotFound if no resource was found)
-    # patient_res = await patient_ref.to_resource()
-    # await patient_res.delete()
-
-    # # Iterate over search set
-    # org_resources = client.resources('Organization')
-    # # Lazy loading resources page by page with page count = 100
-    # async for org_resource in org_resources.limit(100):
-    #     print(org_resource.serialize())
-
-
 if __name__ == '__main__':
     asyncio.run(main())
