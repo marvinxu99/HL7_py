@@ -1,7 +1,7 @@
 from flask import Flask, jsonify, redirect, url_for, session
 from authlib.integrations.flask_client import OAuth
 from config import Config
-import os
+from datetime import timedelta
 
 
 app = Flask(__name__)
@@ -11,6 +11,9 @@ app.config.from_object(Config)
 
 # Use the secret key for session management
 app.secret_key = app.config['SECRET_KEY']
+
+# Set session expiration to automatically clear the session after a certain time period
+app.permanent_session_lifetime = timedelta(minutes=10)
 
 # OAuth configuration
 oauth = OAuth(app)
@@ -31,20 +34,18 @@ google = oauth.register(
 # Home route
 @app.route('/')
 def index():
-    # session_d = dict(session)
-    # email = session_d.get('email', None)
-    # id = session_d.get('id', None)
-    # return f'Hello, email={email}, id={id}!'
-
     # Force the user to log in by clearing the session
     # session.clear()
 
     # If the user is not logged in (no email in session), redirect to login
-    if 'email' not in session:
-        return redirect(url_for('login'))
+    # if 'email' not in session:
+    #    return redirect(url_for('login'))
 
     # If logged in, show the user's email and id
-    return f'Hello, email={session["email"]}, id={session["id"]}!'
+    session_d = dict(session)
+    email = session_d.get('email', None)
+    id = session_d.get('id', None)
+    return f'Hello, email={email}, id={id}!'
 
 # Login route
 @app.route('/login')
@@ -65,7 +66,8 @@ def authorize():
 
     # Store user email and id in session
     session['email'] = user_info['email']
-    session['id'] = user_info['id'] 
+    session['id'] = user_info['id']
+    session.permanent = True
     
     return redirect('/')
 # @app.route('/authorize')
@@ -79,8 +81,8 @@ def authorize():
 # Logout route
 @app.route('/logout')
 def logout():
-    session.pop('email', None)
-    # session.clear()  # Clear all session data
+    # session.pop('email', None)
+    session.clear()  # Clear all session data
     return redirect('/')
 
 
