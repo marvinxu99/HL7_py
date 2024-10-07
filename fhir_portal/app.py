@@ -31,8 +31,20 @@ google = oauth.register(
 # Home route
 @app.route('/')
 def index():
-    email = dict(session).get('email', None)
-    return f'Hello, {email}!'
+    # session_d = dict(session)
+    # email = session_d.get('email', None)
+    # id = session_d.get('id', None)
+    # return f'Hello, email={email}, id={id}!'
+
+    # Force the user to log in by clearing the session
+    # session.clear()
+
+    # If the user is not logged in (no email in session), redirect to login
+    if 'email' not in session:
+        return redirect(url_for('login'))
+
+    # If logged in, show the user's email and id
+    return f'Hello, email={session["email"]}, id={session["id"]}!'
 
 # Login route
 @app.route('/login')
@@ -45,11 +57,18 @@ def login():
 def authorize():
     token = google.authorize_access_token()  # Get access token
     # you can save the token into database
-    resp = google.get('userinfo')  # Use the token to fetch user info
+    
+    # Use the token to fetch user info
+    resp = google.get('userinfo')  
     user_info = resp.json()
     print(user_info)
-    session['email'] = user_info['email']  # Store user email in session
+
+    # Store user email and id in session
+    session['email'] = user_info['email']
+    session['id'] = user_info['id'] 
+    
     return redirect('/')
+# @app.route('/authorize')
 # def authorize():
 #     token = github.authorize_access_token()
 #     # you can save the token into database
