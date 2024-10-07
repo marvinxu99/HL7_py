@@ -13,13 +13,23 @@ async def main():
         # authorization='Bearer TOKEN',
     )
 
-    # Search for patients
-    resources = client.resources('Patient')  # Return lazy search set
-    resources = resources.search(_name='Marvin').limit(10).sort('name')
-    patients = await resources.fetch()  # Returns list of AsyncFHIRResource
+    # Search for encounters
+    resources = client.resources('Encounter')  # Return lazy search set
 
-    for pt in patients:
-        print(pt.serialize())
+    # By patient
+    resources = resources.search(subject='Patient/example').limit(10)
+    
+    # by id
+    # resources = resources.search(_id='example2').limit(10)
+
+    encounters = await resources.fetch()  # Returns list of AsyncFHIRResource
+
+    print("Total encounters: ", len(encounters))
+    print(encounters[0]['id'])
+    
+
+    for enc in encounters:
+        print(enc.serialize())
 
     # # Create Organization resource
     # organization = client.resource(

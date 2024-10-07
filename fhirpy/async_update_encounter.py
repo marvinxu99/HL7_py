@@ -4,7 +4,7 @@ from fhirpy import AsyncFHIRClient
 
 async def main():
 
-    token ="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoibWFydmlueHUiLCJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6IjQ4MTk4YWUwLWY2ZWItNDE3MC1iOTRmLWRmNTFjMzAwNTc2NyIsImp0aSI6ImE0YmRlODY0LTkwYTAtNDdlNi05NzczLTAzNDdjOTRiNjE2NCIsImV4cCI6MTcyODI2OTYyMywiaXNzIjoiYXBpLnNpbXBsaWZpZXIubmV0IiwiYXVkIjoiYXBpLnNpbXBsaWZpZXIubmV0In0.wNccto2gIL73B56xEdN2kUCTYy5-NVQo9bnvCVXlFi8"
+    token="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoibWFydmlueHUiLCJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6IjQ4MTk4YWUwLWY2ZWItNDE3MC1iOTRmLWRmNTFjMzAwNTc2NyIsImp0aSI6IjA4MGIxYjc2LWM3MDgtNGYzZC1iM2FiLTc0YjZhN2UyMDVhMyIsImV4cCI6MTcyODM0ODY1NSwiaXNzIjoiYXBpLnNpbXBsaWZpZXIubmV0IiwiYXVkIjoiYXBpLnNpbXBsaWZpZXIubmV0In0.ALdRabwG9LNty42dgemrF9fHvIfbstVkckto-6zDmGk"
 
     # Create an instance
     client = AsyncFHIRClient(
@@ -17,19 +17,31 @@ async def main():
 
     # Search for patients
     resource = client.resources('Encounter')
-    encounter = await resource.search(id="example2").get()          # Returns one AsyncFHIRResource
-
-    print(encounter.serialize(), "\n")
+    encounter = await resource.search(_id="example2").get()          # Returns one AsyncFHIRResource   
+    
+    # print(encounter.serialize(), "\n")
 
     # Add more information
-    encounter['subjectStatus'] = {
-        "coding" : [{
-        "system" : "http://terminology.hl7.org/CodeSystem/encounter-subject-status",
-        "code" : "receiving-care"
-        }]
-    }
+    # encounter['subjectStatus'] = {
+    #     "coding" : [{
+    #     "system" : "http://terminology.hl7.org/CodeSystem/encounter-subject-status",
+    #     "code" : "receiving-care"
+    #     }]
+    # }
 
-    # Update capability resource
+    # Add location information
+    encounter['location'] = [{
+            "location": {
+                "reference": "Location/amb"
+            },
+            "status": "Completed",
+            "period" : {
+                "start" : "2015-01-17T16:00:00+10:00",
+                "end" : "2015-01-17T16:30:00+10:00"
+            }
+        }]
+
+    # Update resource
     try:
         resp = await encounter.save()
         print("Encounter updated successfully:", resp.serialize())
