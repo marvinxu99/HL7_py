@@ -10,7 +10,7 @@ app = Flask(__name__)
 app.config.from_object(Config)
 
 # Use the secret key for session management
-app.secret_key = os.urandom(24)    # app.config['SECRET_KEY']
+app.secret_key = app.config['SECRET_KEY']
 
 # OAuth configuration
 oauth = OAuth(app)
@@ -24,7 +24,7 @@ google = oauth.register(
     # authorize_url='https://accounts.google.com/o/oauth2/auth',
     # authorize_params=None,
     api_base_url='https://www.googleapis.com/oauth2/v1/',
-    #userinfo_endpoint='https://www.googleapis.com/oauth2/v1/userinfo',  # This is Google API endpoint for user info
+    # userinfo_endpoint='https://www.googleapis.com/oauth2/v1/userinfo',  # This is Google API endpoint for user info
     client_kwargs={'scope': 'openid profile email'},
 )
 
@@ -61,6 +61,7 @@ def authorize():
 @app.route('/logout')
 def logout():
     session.pop('email', None)
+    # session.clear()  # Clear all session data
     return redirect('/')
 
 
