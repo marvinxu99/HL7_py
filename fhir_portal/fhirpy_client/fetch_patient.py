@@ -1,4 +1,4 @@
-from fhir_client import get_fhir_client  # Import the client configuration module
+from fhir_portal.fhirpy_client.fhir_client import get_fhir_client  # Import the client configuration module
 
 
 async def fetch_patients():
@@ -8,9 +8,11 @@ async def fetch_patients():
 
         # Search for patients
         resources = client.resources('Patient')  # Return lazy search set
-        resources = resources.search(name='Marvin').limit(10).sort('name')
+        resources = resources.search(famil__exact='Xu').limit(10).sort('name')
         patients = await resources.fetch()  # Returns list of AsyncFHIRResource
 
+        print("total: ", len(patients))
+        
         return [pt.serialize() for pt in patients]
 
     except Exception as e:

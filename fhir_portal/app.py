@@ -1,7 +1,10 @@
-from flask import Flask, jsonify, redirect, url_for, session
+from flask import Flask, jsonify, redirect, url_for, session, render_template
 from authlib.integrations.flask_client import OAuth
 from config import Config
 from datetime import timedelta
+import asyncio
+from fhir_portal.fhirpy_client.fetch_patient import fetch_patients
+from fhir_portal.fhirpy_client.fetch_encounter import fetch_encounters
 
 
 app = Flask(__name__)
@@ -34,13 +37,6 @@ google = oauth.register(
 # Home route
 @app.route('/')
 def index():
-    # Force the user to log in by clearing the session
-    # session.clear()
-
-    # If the user is not logged in (no email in session), redirect to login
-    # if 'email' not in session:
-    #    return redirect(url_for('login'))
-
     # If logged in, show the user's email and id
     session_d = dict(session)
     email = session_d.get('email', None)
@@ -52,6 +48,7 @@ def index():
 def login():
     redirect_uri = url_for('authorize', _external=True)
     return google.authorize_redirect(redirect_uri)
+
 
 # Authorization route (callback)
 @app.route('/authorize')
@@ -70,19 +67,39 @@ def authorize():
     session.permanent = True
     
     return redirect('/')
-# @app.route('/authorize')
-# def authorize():
-#     token = github.authorize_access_token()
-#     # you can save the token into database
-#     profile = github.get('/user', token=token)
-#     return jsonify(profile)
+
+
+@app.route('/patients')
+def patients_page():
+    # Render the patients.html template
+    return render_template('patients.html')
+
+
+# Route for the encounters page
+@app.route('/encounters')
+def encounters_page():
+    return render_template('encounters.html')
+
+
+# API endpoint to get patients as JSON
+@app.route('/api/patients', methods=['GET'])
+def get_patients():
+    patients = asyncio.run(fetch_patients())
+    return jsonify(patients)
+
+
+# API endpoint to get encounters as JSON
+@app.route('/api/encounters', methods=['GET'])
+def get_encounters():
+    encounters = asyncio.run(fetch_encounters())
+    return jsonify(encounters)
 
 
 # Logout route
 @app.route('/logout')
 def logout():
-    # session.pop('email', None)
-    session.clear()  # Clear all session data
+    session.pop('email', None)
+    # session.clear()  # Clear all session data
     return redirect('/')
 
 
