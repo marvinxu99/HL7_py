@@ -16,41 +16,41 @@ async def main():
     # Search for patients
     resources = client.resources('Patient')  # Return lazy search set
     
-    #resources = resources.search(_name='Marvin').limit(10).sort('name')
-    resources = resources.search(_id='f201')
 
+    # Getting multiple patients
     patients = await resources.fetch()  # Returns list of AsyncFHIRResource
+    for pt in patients:
+        # print(pt.serialize())
+        print(
+            "ID: ", pt['id'],
+            "\n Name:", pt['name'][0]['given'][0], pt.get_by_path('name.0.family') 
+        )
 
+    print("=======================")
+
+    # Search Patients
+    # patients = await client.resources('Patient').search(name=['Wesley9', 'Xu']).fetch_all()
+    patients = await client.resources('Patient').search(gender='male').fetch_all()  # OR
     for pt in patients:
         print(pt.serialize())
+        print(
+            "ID: ", pt['id'],
+            "\n Name:", pt['name'][0]['given'][0], pt.get_by_path('name.0.family') 
+        )
 
-    # # Create Organization resource
-    # organization = client.resource(
-    #     'Organization',
-    #     name='beda.software',
-    #     active=False
-    # )
-    # await organization.save()
+    print("=======================")
 
-    # # Update (PATCH) organization. Resource support accessing its elements
-    # # both as attribute and as a dictionary keys
-    # if organization['active'] is False:
-    #     organization.active = True
-    # await organization.save(fields=['active'])
-    # # `await organization.patch(active=True)` would do the same PATCH operation
+    # Only get one patient
+    resources = resources.search(_id='f201')
+    patient = await resources.get()  # return one patient
+    print(patient.serialize())
 
-    # # Get patient resource by reference and delete
-    # patient_ref = client.reference('Patient', 'new_patient')
-    # # Get resource from this reference
-    # # (throw ResourceNotFound if no resource was found)
-    # patient_res = await patient_ref.to_resource()
-    # await patient_res.delete()
+    print(
+        "ID: ", patient.get('id'), ", "
+        "Name:", patient.get_by_path('name.0.given.0'), patient['name'][0]['family']
+    )
 
-    # # Iterate over search set
-    # org_resources = client.resources('Organization')
-    # # Lazy loading resources page by page with page count = 100
-    # async for org_resource in org_resources.limit(100):
-    #     print(org_resource.serialize())
+     
 
 
 if __name__ == '__main__':

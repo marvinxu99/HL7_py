@@ -13,6 +13,9 @@ class Config:
 def get_token():
     url = "https://api.simplifier.net/token"
     
+    print(Config.MXFHIR_EMAIL)
+    print(Config.MXFHIR_PASSWORD)
+
     # Request payload (body)
     payload = {
         "Email": Config.MXFHIR_EMAIL,
@@ -27,7 +30,7 @@ def get_token():
         data = response.json()  # Parse the response as JSON
         print(data)
         token = data.get('token')  # Extract the token from the response
-        expires_in = data.get('expires_in', 3600)
+        expires_in = data.get('expires_in', 3600)    # expires in 1 hour
         print(f"Token: {token}")
         print(expires_in)
     else:
