@@ -17,7 +17,7 @@ async def main():
 
     # Search for patients
     resource = client.resources('Encounter')
-    encounter = await resource.search(_id="example2").get()          # Returns one AsyncFHIRResource   
+    encounter = await resource.search(_id="example1").get()          # Returns one AsyncFHIRResource   
     
     # print(encounter.serialize(), "\n")
 

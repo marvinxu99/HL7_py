@@ -15,7 +15,10 @@ async def main():
 
     # Search for patients
     resources = client.resources('Patient')  # Return lazy search set
-    resources = resources.search(_name='Marvin').limit(10).sort('name')
+    
+    #resources = resources.search(_name='Marvin').limit(10).sort('name')
+    resources = resources.search(_id='f201')
+
     patients = await resources.fetch()  # Returns list of AsyncFHIRResource
 
     for pt in patients:
