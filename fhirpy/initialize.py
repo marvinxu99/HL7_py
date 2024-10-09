@@ -7,10 +7,11 @@ import os.path
 async def import_bundle(client, filename):
     with open(filename) as fd:
         patient_json = json.load(fd)
-    bundle = client.resource('Bundle')
-    bundle['type'] = 'transaction'
-    bundle['entry'] = patient_json['entry']
-    await bundle.save()
+
+        bundle = client.resource('Bundle')
+        bundle['type'] = 'transaction'
+        bundle['entry'] = patient_json['entry']
+        await bundle.save()
 
 
 async def import_dataset(client, dataset_path):

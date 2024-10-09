@@ -35,13 +35,13 @@
     },
     {
       "resource": {
-        "id": "practitioner_kelly_smith",
+        "id": "practitioner_kelly_smith2",
         "name": [
           {
             "given": [
               "Kelly"
             ],
-            "family": "Smith",
+            "family": "Smith2",
             "text": "Kelly Smith"
           }
         ],
@@ -76,13 +76,13 @@
     },
     {
       "resource": {
-        "id": "practitioner_adam_ainsley",
+        "id": "practitioner_adam_ainsley2",
         "name": [
           {
             "given": [
               "Adam"
             ],
-            "family": "Ainsley",
+            "family": "Ainsley2",
             "text": "Adam Ainsley"
           }
         ],

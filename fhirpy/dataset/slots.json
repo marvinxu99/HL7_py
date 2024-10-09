@@ -1,0 +1,454 @@
+{
+  "resourceType": "Bundle",
+  "type": "transaction",
+  "entry": [
+    {
+     "resource": {
+      "id": "slot_for_schedule_for_kelly_smith_0",
+      "start": "2018-09-16T09:00:00",
+      "end": "2018-09-16T10:00:00",
+      "status": "free",
+      "schedule": {
+        "reference": "Schedule/schedule_for_kelly_smith"
+      },
+      "serviceCategory": [
+        {
+          "coding": [
+            {
+              "code": "17",
+              "display": "General Practice"
+            }
+          ]
+        }
+      ],
+      "serviceType": [
+        {
+          "coding": [
+            {
+              "code": "124",
+              "display": "General Practice"
+            }
+          ]
+        }
+      ],
+      "specialty": [
+        {
+          "coding": [
+            {
+              "code": "394814009",
+              "display": "General Practice"
+            }
+          ]
+        }
+      ],
+      "resourceType": "Slot",
+      "meta": {
+        "lastUpdated": "2018-11-02T05:54:11.768Z",
+        "versionId": "72",
+        "tag": [
+          {
+            "system": "https://aidbox.app",
+            "code": "created"
+          }
+        ]
+      }
+    },
+    "request": {
+      "method": "POST",
+      "url": "Slot"
+    }
+  },
+  {
+    "resource": {
+      "id": "slot_for_schedule_for_kelly_smith_1",
+      "start": "2018-09-16T10:00:00",
+      "end": "2018-09-16T11:00:00",
+      "status": "free",
+      "schedule": {
+        "reference": "Schedule/schedule_for_kelly_smith"
+      },
+      "serviceCategory": [
+        {
+          "coding": [
+            {
+              "code": "17",
+              "display": "General Practice"
+            }
+          ]
+        }
+      ],
+      "serviceType": [
+        {
+          "coding": [
+            {
+              "code": "124",
+              "display": "General Practice"
+            }
+          ]
+        }
+      ],
+      "specialty": [
+        {
+          "coding": [
+            {
+              "code": "394814009",
+              "display": "General Practice"
+            }
+          ]
+        }
+      ],
+      "resourceType": "Slot",
+      "meta": {
+        "lastUpdated": "2018-11-02T05:54:11.824Z",
+        "versionId": "73",
+        "tag": [
+          {
+            "system": "https://aidbox.app",
+            "code": "created"
+          }
+        ]
+      }
+    },
+    "request": {
+      "method": "POST",
+      "url": "Slot"
+    }
+  },
+  {
+    "resource": {
+      "id": "slot_for_schedule_for_kelly_smith_2",
+      "start": "2018-09-16T11:00:00",
+      "end": "2018-09-16T12:00:00",
+      "status": "free",
+      "schedule": {
+        "reference": "Schedule/schedule_for_kelly_smith"
+      },
+      "serviceCategory": [
+        {
+          "coding": [
+            {
+              "code": "17",
+              "display": "General Practice"
+            }
+          ]
+        }
+      ],
+      "serviceType": [
+        {
+          "coding": [
+            {
+              "code": "124",
+              "display": "General Practice"
+            }
+          ]
+        }
+      ],
+      "specialty": [
+        {
+          "coding": [
+            {
+              "code": "394814009",
+              "display": "General Practice"
+            }
+          ]
+        }
+      ],
+      "resourceType": "Slot",
+      "meta": {
+        "lastUpdated": "2018-11-02T05:54:11.879Z",
+        "versionId": "74",
+        "tag": [
+          {
+            "system": "https://aidbox.app",
+            "code": "created"
+          }
+        ]
+      }
+    },
+    "request": {
+      "method": "POST",
+      "url": "Slot"
+    }
+  },
+  {
+    "resource": {
+      "id": "slot_for_schedule_for_kelly_smith_3",
+      "start": "2018-09-16T12:00:00",
+      "end": "2018-09-16T13:00:00",
+      "status": "free",
+      "schedule": {
+        "reference": "Schedule/schedule_for_kelly_smith"
+      },
+      "serviceCategory": [
+          {
+          "coding": [
+            {
+              "code": "17",
+              "display": "General Practice"
+            }
+          ]
+        }
+      ],
+      "serviceType": [
+        {
+          "coding": [
+            {
+              "code": "124",
+              "display": "General Practice"
+            }
+          ]
+        }
+      ],
+      "specialty": [
+        {
+          "coding": [
+            {
+              "code": "394814009",
+              "display": "General Practice"
+            }
+          ]
+        }
+      ],
+      "resourceType": "Slot",
+      "meta": {
+        "lastUpdated": "2018-11-02T05:54:11.937Z",
+        "versionId": "75",
+        "tag": [
+          {
+            "system": "https://aidbox.app",
+            "code": "created"
+          }
+        ]
+      }
+    },
+    "request": {
+      "method": "POST",
+      "url": "Slot"
+    }
+  },
+  {
+    "resource": {
+      "id": "slot_for_schedule_for_kelly_smith_4",
+      "start": "2018-09-16T14:00:00",
+      "end": "2018-09-16T15:00:00",
+      "status": "free",
+      "schedule": {
+        "reference": "Schedule/schedule_for_kelly_smith"
+      },
+      "serviceCategory": [
+        {
+          "coding": [
+            {
+              "code": "17",
+              "display": "General Practice"
+            }
+          ]
+        }
+      ],
+      "serviceType": [
+        {
+          "coding": [
+            {
+              "code": "124",
+              "display": "General Practice"
+            }
+          ]
+        }
+      ],
+      "specialty": [
+        {
+          "coding": [
+            {
+              "code": "394814009",
+              "display": "General Practice"
+            }
+          ]
+        }
+      ],
+      "resourceType": "Slot",
+      "meta": {
+        "lastUpdated": "2018-11-02T05:54:11.994Z",
+        "versionId": "76",
+        "tag": [
+          {
+            "system": "https://aidbox.app",
+            "code": "created"
+          }
+        ]
+      }
+    },
+    "request": {
+      "method": "POST",
+      "url": "Slot"
+    }
+  },
+  {
+    "resource": {
+      "id": "slot_for_schedule_for_kelly_smith_5",
+      "start": "2018-09-16T15:00:00",
+      "end": "2018-09-16T16:00:00",
+      "status": "free",
+      "schedule": {
+        "reference": "Schedule/schedule_for_kelly_smith"
+      },
+      "serviceCategory": [
+        {
+          "coding": [
+            {
+              "code": "17",
+              "display": "General Practice"
+            }
+          ]
+        }
+      ],
+      "serviceType": [
+        {
+          "coding": [
+            {
+              "code": "124",
+              "display": "General Practice"
+            }
+          ]
+        }
+      ],
+      "specialty": [
+        {
+          "coding": [
+            {
+              "code": "394814009",
+              "display": "General Practice"
+            }
+          ]
+        }
+      ],
+      "resourceType": "Slot",
+      "meta": {
+        "lastUpdated": "2018-11-02T05:54:12.053Z",
+        "versionId": "77",
+        "tag": [
+          {
+            "system": "https://aidbox.app",
+            "code": "created"
+          }
+        ]
+      }
+    },
+    "request": {
+      "method": "POST",
+      "url": "Slot"
+    }
+  },
+  {
+    "resource": {
+      "id": "slot_for_schedule_for_kelly_smith_6",
+      "start": "2018-09-16T16:00:00",
+      "end": "2018-09-16T17:00:00",
+      "status": "free",
+      "schedule": {
+        "reference": "Schedule/schedule_for_kelly_smith"
+      },
+      "serviceCategory": [
+        {
+          "coding": [
+            {
+              "code": "17",
+              "display": "General Practice"
+            }
+          ]
+        }
+      ],
+      "serviceType": [
+        {
+          "coding": [
+            {
+              "code": "124",
+              "display": "General Practice"
+            }
+          ]
+        }
+      ],
+      "specialty": [
+        {
+          "coding": [
+            {
+              "code": "394814009",
+              "display": "General Practice"
+            }
+          ]
+        }
+      ],
+      "resourceType": "Slot",
+      "meta": {
+        "lastUpdated": "2018-11-02T05:54:12.112Z",
+        "versionId": "78",
+        "tag": [
+          {
+            "system": "https://aidbox.app",
+            "code": "created"
+          }
+        ]
+      }
+    },
+    "request": {
+      "method": "POST",
+      "url": "Slot"
+    }
+  },
+  {
+    "resource": {
+      "id": "slot_for_schedule_for_kelly_smith_7",
+      "start": "2018-09-16T17:00:00",
+      "end": "2018-09-16T18:00:00",
+      "status": "free",
+      "schedule": {
+        "reference": "Schedule/schedule_for_kelly_smith"
+      },
+      "serviceCategory": [
+        {
+          "coding": [
+            {
+              "code": "17",
+              "display": "General Practice"
+            }
+          ]
+        }
+      ],
+      "serviceType": [
+        {
+          "coding": [
+            {
+              "code": "124",
+              "display": "General Practice"
+            }
+          ]
+        }
+      ],
+      "specialty": [
+        {
+          "coding": [
+            {
+              "code": "394814009",
+              "display": "General Practice"
+            }
+          ]
+        }
+      ],
+      "resourceType": "Slot",
+      "meta": {
+        "lastUpdated": "2018-11-02T05:54:12.170Z",
+        "versionId": "79",
+        "tag": [
+          {
+            "system": "https://aidbox.app",
+            "code": "created"
+          }
+        ]
+      }
+    },
+    "request": {
+      "method": "POST",
+      "url": "Slot"
+    }
+  }
+]
+}

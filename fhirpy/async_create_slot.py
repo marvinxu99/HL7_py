@@ -1,0 +1,57 @@
+import asyncio
+# from fhir_client_auto_token import get_fhir_client
+from fhir_client import get_fhir_client
+
+
+async def main():
+    client = get_fhir_client()
+
+    data = {
+      "resourceType" : "Slot",
+      "id" : "example",
+      "text" : {
+        "status" : "generated",
+        "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\">\n\t\t\t25 Dec 2013 9:15am - 9:30am: <b>Busy</b> Physiotherapy\n\t\t</div>"
+      },
+      "serviceCategory" : [{
+        "coding" : [{
+          "code" : "17",
+          "display" : "General Practice"
+        }]
+      }],
+      "serviceType" : [{
+        "concept" : {
+          "coding" : [{
+            "code" : "57",
+            "display" : "Immunization"
+          }]
+        }
+      }],
+      "specialty" : [{
+        "coding" : [{
+          "code" : "408480009",
+          "display" : "Clinical immunology"
+        }]
+      }],
+      "appointmentType" : [{
+        "coding" : [{
+          "system" : "http://terminology.hl7.org/CodeSystem/v2-0276",
+          "code" : "WALKIN",
+          "display" : "A previously unscheduled walk-in visit"
+        }]
+      }],
+      "schedule" : {
+        "reference" : "Schedule/example"
+      },
+      "status" : "free",
+      "start" : "2013-12-25T09:15:00Z",
+      "end" : "2013-12-25T09:30:00Z",
+      "comment" : "Assessments should be performed before requesting appointments in this slot."
+    }
+    
+    await client.resource('Slot', **data).save()
+
+
+
+if __name__ == '__main__':
+    asyncio.run(main())
