@@ -11,8 +11,9 @@ def get_fhir_client():
     """
     # Define the FHIR client (ensure the FHIR server URL is correct)
     client = AsyncFHIRClient(
-        url='https://fhir.simplifier.net/mxfhir',
-        authorization=f'Bearer {token}',
+        # url='https://fhir.simplifier.net/mxfhir',
+        url='https://fhir-open.cerner.com/r4/ec2458f2-1e24-41c8-b71b-0e701af7583d',
+        # authorization=f'Bearer {token}',
         extra_headers={
             'Accept': 'application/fhir+json'
         }
